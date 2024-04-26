@@ -140,7 +140,7 @@ img{
     font-family: 'Roboto';
     margin: 100px;
     border-radius: 7px;
-    width: 1000px;
+    width: 850px;
     height: 160px;
     margin-left: 150px;
     margin-right: 150px;
@@ -156,16 +156,14 @@ img{
     margin-left: 100px;
 }
 
-.sign-up > button{
+.sign-up-button{
     background-color: #3882F6;
     font-family: 'Roboto';
     font-weight: bold;
     padding: 5px;
     border: solid thin white;
     border-radius: 7px;
-    margin-right: 100px;
-    margin-bottom: 200px;
-    align-items: end;
+    margin-left: 700px;
 }
 
 .footer {
