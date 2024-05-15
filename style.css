@@ -52,19 +52,19 @@
 }
 
 .mental-health {
-    font-size: 50px; 
+    font-size: 40px; 
     font-weight: bolder;
-    color: white;
+    color: beige;
 }
 
 .process {
-    font-size: 50px; 
+    font-size: 40px; 
     font-weight: bolder;
     text-decoration: underline; 
     text-decoration-color: darkgreen; 
     text-decoration-thickness: 5px; 
     text-decoration-style: wavy; 
-    color: white;
+    color: beige;
 }
 
 p{
@@ -103,6 +103,9 @@ img{
 
 .content > h2{
     text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -30px;
 }
 
 .content > p{
