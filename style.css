@@ -6,12 +6,12 @@
     background-color: beige;
 }
 .header{
-    background-color: bisque;
+    background-color: black;
     padding: 50px;
 }
 
 .header > h1{
-    color: black;
+    color: white;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 48px;
@@ -19,7 +19,7 @@
 }
 
 .header > p{
-    color: black;
+    color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
@@ -30,13 +30,14 @@
     justify-content: flex-end;
     font-family: 'Roboto';
     font-size: 20px;
-    color: black;
+    color: white;
     align-items: center;
 }
 
 .header-links > div{
     margin: 10px;
     margin-top: -30px;
+    font-weight: bold;
     
 }
 .information{
@@ -50,15 +51,28 @@
     margin-left: -80px;
 }
 
-div > h1{
-    font-size: 48px;
-    color: black;
+.mental-health {
+    font-size: 50px; 
+    font-weight: bolder;
+    color: white;
 }
 
-div > p{
-    font-size: 18px;
-    color: black;
+.process {
+    font-size: 50px; 
+    font-weight: bolder;
+    text-decoration: underline; 
+    text-decoration-color: darkgreen; 
+    text-decoration-thickness: 5px; 
+    text-decoration-style: wavy; 
+    color: white;
 }
+
+p{
+    font-size: 30px;
+    font-weight: normal;
+    color: white
+}
+
 div > button{
     background-color: orange;
     font-family: 'Roboto';
