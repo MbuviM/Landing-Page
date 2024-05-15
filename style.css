@@ -67,11 +67,7 @@
 .process {
     font-size: 40px; 
     font-weight: bolder;
-    text-decoration: underline; 
-    text-decoration-color: darkgreen; 
-    text-decoration-thickness: 5px; 
-    text-decoration-style: wavy; 
-    color: beige;
+    color: pink;
 }
 
 .information, p{
