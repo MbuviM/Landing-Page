@@ -1,10 +1,17 @@
+#header-logo > img{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: -30px;
+    background-color: beige;
+}
 .header{
-    background-color: #1F2937;
+    background-color: bisque;
     padding: 50px;
 }
 
 .header > h1{
-    color: #F9FAF8;
+    color: black;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 48px;
@@ -12,25 +19,18 @@
 }
 
 .header > p{
-    color: #E5E7EB;
+    color: black;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
 
-#header-logo{
-    text-align: left;
-    font-family: 'Roboto';
-    font-size: 24px;
-    color: #F9FAF8;
-    font-weight: bold;
-}
 
 .header-links{
     display: flex;
     justify-content: flex-end;
     font-family: 'Roboto';
     font-size: 20px;
-    color: #F9FAF8;
+    color: black;
     align-items: center;
 }
 
@@ -52,23 +52,25 @@
 
 div > h1{
     font-size: 48px;
-    color: #F9FAF8;
+    color: black;
 }
 
 div > p{
     font-size: 18px;
-    color: #F9FAF8;
+    color: black;
 }
 div > button{
-    background-color: #3882F6;
+    background-color: orange;
     font-family: 'Roboto';
     color: white;
     font-weight: bold;
+    font-size: large;
     padding: 5px 20px;
-    border: #3882F6;
+    border: orange;
     text-align: center;
-    border-radius: 7px;
-    width: 100px;
+    border-radius: 30px;
+    width: 150px;
+    height: 50px;
 }
 
 img{
@@ -80,7 +82,7 @@ img{
 }
 
 .content{
-    background-color: white;
+    background-color: beige;
     padding: 100px;
     font-family: 'Roboto';
 }
