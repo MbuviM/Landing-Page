@@ -14,9 +14,10 @@ class Therapist(models.Model):
     years_of_experience = models.IntegerField(default=0)
     image = models.ImageField(upload_to='therapists/', default='therapists/default.jpg')
     fee_per_session = models.IntegerField(default=0)
-    accepts_queer_clients = models.BooleanField(default=False)  # True or False
     monthly_slots = models.IntegerField(default=0)
     monthly_fee = models.IntegerField(default=0)
+    accepts_queer_clients = models.BooleanField(default=False)  # True or False
+    
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
