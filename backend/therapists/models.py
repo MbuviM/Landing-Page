@@ -13,7 +13,7 @@ class Therapist(models.Model):
     type_of_therapy = models.CharField(max_length=100, default='Cognitive Behavior')  # No default value specified here
     years_of_experience = models.IntegerField(default=0)
     image = models.ImageField(upload_to='therapists/', default='therapists/default.jpg')
-    fee = models.IntegerField(default=0)
+    fee_per_session = models.IntegerField(default=0)
     accepts_queer_clients = models.BooleanField(default=False)  # True or False
 
     def __str__(self):
