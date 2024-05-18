@@ -6,8 +6,8 @@
     background-color: beige;
 }
 .header{
-    background-color: black;
-    padding: 50px;
+    background-color: white;
+    padding: 30px;
 }
 
 .header > h1{
@@ -24,37 +24,85 @@
     font-size: 18px;
 }
 
-#header-logo > h1{
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    margin: 10px;
-    margin-top: -30px;
-    font-weight: bold;
+/* General reset for better cross-browser consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.header-links{
+
+header.header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out children elements */
+    align-items: center; /* Center items vertically */
+    background-color: white; /* Background color of the header */
+    padding: 10px 20px; /* Padding around the header */
+    color: black; /* Text color */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#header-logo {
     display: flex;
-    justify-content: flex-end;
-    font-family: 'Roboto';
-    font-size: 20px;
-    color: white;
     align-items: center;
 }
 
-.header-links > div{
-    margin: 10px;
-    margin-top: -30px;
-    font-weight: bold;
-    
+#header-logo h1 {
+    font-size: 24px; /* Font size for the logo text */
+    margin-left: 10px; /* Margin between the logo and the text */
+    color: black; /* Color for the logo text */
 }
+
+nav.header-links {
+    display: flex; /* Flexbox for the nav links */
+}
+
+nav.header-links a {
+    color: black; /* Text color of the links */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px 15px; /* Padding around each link */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+nav.header-links a:hover {
+    background-color: #575757; /* Background color on hover */
+    color: #ffdd57; /* Text color on hover */
+}
+
+/* Responsive Design: Adjust header layout for smaller screens */
+@media (max-width: 768px) {
+    header.header {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    nav.header-links {
+        flex-direction: column; /* Stack links vertically */
+        width: 100%; /* Take full width */
+    }
+
+    nav.header-links a {
+        width: 100%; /* Take full width */
+        text-align: left; /* Align text to the left */
+        padding: 10px 20px; /* Adjust padding */
+        margin-bottom: 5px; /* Space between links */
+    }
+
+    #header-logo h1 {
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 10px; /* Add bottom margin */
+    }
+}
+
+
 .information{
     display: flex;
+    background-color: grey;
 }
 
 .information > div{
     justify-content: flex-start;
     padding: 100px;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: -80px;
 }
 
@@ -78,7 +126,7 @@
 
 div > button{
     background-color: orange;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     font-weight: bold;
     font-size: large;
@@ -102,7 +150,7 @@ img{
 .content{
     background-color: beige;
     padding: 100px;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .content > h2{
@@ -116,7 +164,7 @@ img{
     font-size: 18px;
     color: #1F2937;
     font-weight: lighter;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .image-container {
@@ -135,14 +183,14 @@ img{
 .quote{
     background-color: #E5E7EB;
     padding: 100px;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .quote > p{
     font-size: 36px;
     color: #1F2937;
     font-weight: 100;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
     margin-left: 150px;
     margin-right: 150px;
@@ -152,7 +200,7 @@ img{
     font-size: 24px;
     color: #1F2937;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 100px;
     margin-right: 150px;
     text-align: end;
@@ -161,7 +209,7 @@ img{
 .sign-up{
     background-color: #3882F6;
     padding: 10px;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 100px;
     border-radius: 7px;
     width: 850px;
@@ -183,7 +231,7 @@ img{
 
 .sign-up-button{
     background-color: #3882F6;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     padding: 5px;
     border: solid thin white;
@@ -196,7 +244,7 @@ img{
     padding: 10px;
     p{
         text-align: center;
-        font-family: 'Roboto';
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         color: white;
         font-size: 10px;
     }
