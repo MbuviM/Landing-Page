@@ -95,8 +95,15 @@ nav.header-links a:hover {
 
 
 .information{
+    position: relative; /* Positioning context for absolute children */
+    background: url('Photos/Mental-Health.jfif') no-repeat center center; /* Background image */
+    background-size: cover; /* Cover entire section */
+    height: 600px; /* Height of the section, adjust as needed */
     display: flex;
-    background-color: lightgray;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center-align text */
+    padding: 20px;
 }
 
 .information > div{
@@ -111,7 +118,7 @@ nav.header-links a:hover {
 .mental-health {
     font-size: 40px; 
     font-weight: bolder;
-    color: black;
+    color: #fff;
 }
 
 .process {
@@ -124,7 +131,7 @@ nav.header-links a:hover {
 .information, p{
     font-size: 30px;
     font-weight: normal;
-    color: black
+    color: #fff
 }
 
 div > button{
