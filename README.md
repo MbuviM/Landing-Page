@@ -25,6 +25,11 @@ therapist-connect/
 │   ├── script.js
 ├── photos/
 ├── README.md
+├── backend/
+├──Pipfile.lock
+├── Pipfile
+
+
 ```
 
 ## Installation
