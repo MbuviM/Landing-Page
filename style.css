@@ -96,7 +96,7 @@ nav.header-links a:hover {
 
 .information{
     display: flex;
-    background-color: grey;
+    background-color: lightgray;
 }
 
 .information > div{
@@ -104,24 +104,27 @@ nav.header-links a:hover {
     padding: 100px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: -80px;
+    margin-top: 40px;
+    
 }
 
 .mental-health {
     font-size: 40px; 
     font-weight: bolder;
-    color: beige;
+    color: black;
 }
 
 .process {
     font-size: 40px; 
     font-weight: bolder;
-    color: pink;
+    color: purple;
+    font-style: italic;
 }
 
 .information, p{
     font-size: 30px;
     font-weight: normal;
-    color: white
+    color: black
 }
 
 div > button{
@@ -136,6 +139,7 @@ div > button{
     border-radius: 30px;
     width: 150px;
     height: 50px;
+    margin-top: 20px;
 }
 
 img{
@@ -143,8 +147,9 @@ img{
         width: 600px;
         height: 400px;
         justify-content: flex-end;
-        margin-top: 50px;
+        margin-top: 60px;
         border-radius: 50px;
+        margin-bottom: 20px;
 }
 
 .content{
