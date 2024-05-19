@@ -6,23 +6,24 @@
     </head>
     <body>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <div class="container">
             <header class="header">
                 <div id="header-logo">
                     <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
                     <h1>Therapist Connect</h1>
                 </div>
-                <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-                <nav class="header-links">
-                    <div class="nav-container">
-                        <a href="index.html" id="header-1">Home</a>
-                        <a href="about.html" id="header-2">About</a>
-                        <a href="find-a-therapist.html" id="header-3">Find a Therapist</a>
-                        <a href="therapists.html" id="header-4">Registration</a>
-                        <a href="#login" id="header-5">Login</a>
-                        <a href="#signup" id="header-6">Signup</a>
-                    </div>
-                </nav>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="find-a-therapist.html">Find a Therapist</a>
+                    <a href="therapists.html">Registration</a>
+                </div>
+                  
+                  <div id="main">
+                    <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+                  </div>
             </header>
     
             <main>
