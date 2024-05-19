@@ -96,8 +96,8 @@ nav.header-links a:hover {
 
 .information{
     position: relative; /* Positioning context for absolute children */
-    background: url('Photos/Mental-Health.jfif') no-repeat center center; /* Background image */
     background-size: cover; /* Cover entire section */
+    background-image: url('Photos/mental-health2.jpg'); /* Background image */
     height: 600px; /* Height of the section, adjust as needed */
     display: flex;
     justify-content: center; /* Center content horizontally */
@@ -109,10 +109,18 @@ nav.header-links a:hover {
 .information > div{
     justify-content: flex-start;
     padding: 100px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: sans-serif;
     margin-left: -80px;
     margin-top: 40px;
     
+}
+.information img {
+    position: absolute;
+    right: 0; /* Align the image to the right */
+    top: 50%;
+    transform: translateY(-50%); /* Center the image vertically */
+    max-width: 200px; /* Adjust the size of the image as needed */
+    margin-right: 10px;
 }
 
 /* General text styling */
@@ -171,7 +179,7 @@ nav.header-links a:hover {
 
 /* Base button styling */
 div > button {
-    background-color: orange;
+    background-color: purple;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     font-weight: bold;
