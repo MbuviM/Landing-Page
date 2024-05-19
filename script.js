@@ -1,12 +1,15 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".header-links");
-
-    menuToggle.addEventListener("click", function() {
-        navLinks.classList.toggle("active");
-    });
-});
-
+/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+  
 document.addEventListener('DOMContentLoaded', function() {
     // Handle "Find a Therapist" form submission
     const findTherapistForm = document.querySelector('#find-therapist form');
@@ -48,12 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
         registrationForm.reset();
     });
 
-   // Handle "Get Started" button click
-const getStartedButton = document.querySelector('.information button');
-getStartedButton.addEventListener('click', function() {
-    // Redirect to the "Find a Therapist" page
-    window.location.href = 'find-a-therapist.html';
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle "Get Started" button click
+        const getStartedButton = document.querySelector('.information button');
+        getStartedButton.addEventListener('click', function() {
+            // Redirect to the "Find a Therapist" page
+            window.location.href = 'find-a-therapist.html';
+        });
+    });
+    
 
     // Handle other button interactions if needed
     const searchButton = document.querySelector('.search-button');
