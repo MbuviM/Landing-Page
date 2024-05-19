@@ -72,6 +72,18 @@ nav.header-links a:hover {
     color: #ffdd57; /* Text color on hover */
 }
 
+/* Mobile styling */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    background-color: #333;
+}
+
 /* Responsive Design: Adjust header layout for smaller screens */
 @media (max-width: 768px) {
     .header {
