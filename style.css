@@ -1,113 +1,97 @@
-#header-logo > img{
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
-    margin-top: -30px;
-    background-color: beige;
-}
-
-/* General reset for better cross-browser consistency */
-* {
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #f0f0f0;
-}
-
-/* Container for header and main content */
-.container {
-    position: relative;
-    background: url('Photos/mental-health2.jpg') no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    overflow: hidden;
-}
-
-.header {
-    color: white;
-    width: 100%;
-    padding: 10px 20px;
+.header-links {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1; /* Ensures the header stays above other content */
+    justify-content: center;
+    background-color: #333;
 }
 
-#header-logo h1 {
-    margin: 0;
+.header-links .nav-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .header-links a {
-    color: white;
-    margin-left: 20px;
+    color: black;
+    padding: 14px 20px;
     text-decoration: none;
-    font-weight: bold;
+    text-align: center;
 }
 
 .header-links a:hover {
-    text-decoration: underline;
-}
-
-main {
-    width: 100%;
-}
-
-nav.header-links {
-    display: flex; /* Flexbox for the nav links */
-}
-
-nav.header-links a {
-    color: white; /* Text color of the links */
-    text-decoration: none; /* Remove underline from links */
-    padding: 10px 15px; /* Padding around each link */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
-}
-
-nav.header-links a:hover {
-    background-color: #575757; /* Background color on hover */
-    color: #ffdd57; /* Text color on hover */
+    background-color: #575757;
 }
 
 /* Mobile styling */
 .menu-toggle {
     display: none;
     font-size: 24px;
-    background: none;
+    background-color: white;
     border: none;
-    color: white;
+    color: black;
     padding: 14px 20px;
     cursor: pointer;
     background-color: #333;
 }
 
-/* Responsive Design: Adjust header layout for smaller screens */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: flex-start; /* Align items to the left */
+@media screen and (max-width: 768px) {
+    .header-links {
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200px;
+        height: 100vh;
+        background-color: #333;
+        transition: left 0.3s ease-in-out;
+        
     }
 
-    nav.header-links {
-        flex-direction: column; /* Stack links vertically */
-        width: 100%; /* Take full width */
+    .header-links.active {
+        left: 0;
     }
 
-    nav.header-links a {
-        width: 100%; /* Take full width */
-        text-align: left; /* Align text to the left */
-        padding: 10px 20px; /* Adjust padding */
-        margin-bottom: 5px; /* Space between links */
+    .menu-toggle {
+        display: block;
     }
 
-    #header-logo h1 {
-        margin-left: 0; /* Remove left margin */
-        margin-bottom: 10px; /* Add bottom margin */
+    .header-links .nav-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header-links a {
+        width: 100%;
+        text-align: left;
+        padding: 14px 20px;
+        border-bottom: 1px solid #575757;
     }
 }
+
+/* Desktop styling */
+@media screen and (min-width: 769px) {
+    .header-links {
+        position: static;
+        height: auto;
+        background-color: white;
+    }
+
+    .header-links .nav-container {
+        flex-direction: row;
+    }
+
+    .header-links a {
+        border-bottom: none;
+    }
+}
+
 
 .information {
     position: relative; /* Positioning context for absolute children */
