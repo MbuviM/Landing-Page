@@ -268,98 +268,47 @@ img{
     box-sizing: border-box;
 }
 
-#find-therapist.find-therapist {
-    background-color: #f5f5f5; /* Light grey background */
-    padding: 40px 20px; /* Padding around the section */
-    text-align: center; /* Center-align text */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    max-width: 600px; /* Max width for the section */
-    margin: 40px auto; /* Center section and add vertical margin */
+.find-therapist {
+    background-color: beige;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    height: 768px;
 }
 
-#find-therapist h2 {
-    font-size: 32px; /* Font size for the heading */
-    color: #333; /* Dark text color */
-    margin-bottom: 20px; /* Space below the heading */
+.find-therapist h2 {
+    margin-top: 300px;
 }
 
-#find-therapist p {
-    font-size: 18px; /* Font size for the paragraph */
-    color: #666; /* Grey text color */
-    margin-bottom: 30px; /* Space below the paragraph */
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+    border-color: orangered;
+    box-shadow: inset;
 }
 
-#find-therapist form {
-    display: flex; /* Flexbox for form layout */
-    flex-direction: column; /* Stack form elements vertically */
-    align-items: center; /* Center-align form elements */
-    gap: 15px; /* Space between form elements */
+.input-container input {
+    width: 500px;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='orange' stroke='orange' stroke-width='1.5' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 10px center;
 }
 
-#find-therapist label {
-    font-size: 16px; /* Font size for labels */
-    color: #333; /* Dark text color for labels */
-    align-self: flex-start; /* Align labels to the start */
-    margin-left: 10px; /* Small left margin for labels */
-}
-
-#find-therapist input[type="text"] {
-    width: 100%; /* Full width inputs */
-    max-width: 400px; /* Max width for inputs */
-    padding: 10px; /* Padding inside inputs */
-    font-size: 16px; /* Font size for input text */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Rounded corners */
-    outline: none; /* Remove default outline */
-    transition: border-color 0.3s ease; /* Smooth transition for border color */
-}
-
-#find-therapist input[type="text"]:focus {
-    border-color: #333; /* Darker border on focus */
-}
 
 .search-button {
-    background-color: orange; /* Background color for the button */
-    color: white; /* Text color for the button */
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /* Font family */
-    font-weight: bold; /* Bold font */
-    font-size: 16px; /* Font size */
-    padding: 10px 20px; /* Padding around the button */
-    border: none; /* Remove default border */
-    border-radius: 30px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    padding: 10px 20px;
+    background-color: orangered;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .search-button:hover {
-    background-color: #ff8c00; /* Slightly darker orange on hover */
-    transform: scale(1.05); /* Slightly increase size on hover */
-}
-
-/* Responsive design: Adjust form layout for smaller screens */
-@media (max-width: 600px) {
-    #find-therapist {
-        padding: 30px 15px; /* Adjust padding for smaller screens */
-    }
-
-    #find-therapist h2 {
-        font-size: 28px; /* Smaller font size for heading */
-    }
-
-    #find-therapist p {
-        font-size: 16px; /* Smaller font size for paragraph */
-    }
-
-    #find-therapist input[type="text"] {
-        font-size: 14px; /* Smaller font size for input text */
-        padding: 8px; /* Adjust padding for inputs */
-    }
-
-    .search-button {
-        font-size: 14px; /* Smaller font size for button */
-        padding: 8px 16px; /* Adjust padding for button */
-    }
+    background-color: orange;
 }
 
 /* General reset for better cross-browser consistency */
