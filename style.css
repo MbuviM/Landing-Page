@@ -5,24 +5,6 @@
     margin-top: -30px;
     background-color: beige;
 }
-.header{
-    background-color: white;
-    padding: 30px;
-}
-
-.header > h1{
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    font-size: 48px;
-
-}
-
-.header > p{
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-}
 
 /* General reset for better cross-browser consistency */
 * {
@@ -31,25 +13,47 @@
     box-sizing: border-box;
 }
 
-header.header {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out children elements */
-    align-items: center; /* Center items vertically */
-    background-color: white; /* Background color of the header */
-    padding: 10px 20px; /* Padding around the header */
-    color: black; /* Text color */
+body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f0f0f0;
 }
 
-#header-logo {
+/* Container for header and main content */
+.container {
+    position: relative;
+    background: url('Photos/mental-health2.jpg') no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+}
+
+.header {
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    z-index: 1; /* Ensures the header stays above other content */
 }
 
 #header-logo h1 {
-    font-size: 24px; /* Font size for the logo text */
-    margin-left: 10px; /* Margin between the logo and the text */
-    color: black; /* Color for the logo text */
+    margin: 0;
+}
+
+.header-links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
+}
+
+main {
+    width: 100%;
 }
 
 nav.header-links {
@@ -57,7 +61,7 @@ nav.header-links {
 }
 
 nav.header-links a {
-    color: black; /* Text color of the links */
+    color: white; /* Text color of the links */
     text-decoration: none; /* Remove underline from links */
     padding: 10px 15px; /* Padding around each link */
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
@@ -70,7 +74,7 @@ nav.header-links a:hover {
 
 /* Responsive Design: Adjust header layout for smaller screens */
 @media (max-width: 768px) {
-    header.header {
+    .header {
         flex-direction: column; /* Stack elements vertically */
         align-items: flex-start; /* Align items to the left */
     }
@@ -93,12 +97,9 @@ nav.header-links a:hover {
     }
 }
 
-
-.information{
+.information {
     position: relative; /* Positioning context for absolute children */
-    background-size: cover; /* Cover entire section */
-    background-image: url('Photos/mental-health2.jpg'); /* Background image */
-    height: 600px; /* Height of the section, adjust as needed */
+    height: 400px; /* Height of the section, adjust as needed */
     display: flex;
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
@@ -106,126 +107,26 @@ nav.header-links a:hover {
     padding: 20px;
 }
 
-.information > div{
-    justify-content: flex-start;
-    padding: 100px;
-    font-family: sans-serif;
-    margin-left: -80px;
-    margin-top: 40px;
-    
-}
-.information img {
-    position: absolute;
-    right: 0; /* Align the image to the right */
-    top: 50%;
-    transform: translateY(-50%); /* Center the image vertically */
-    max-width: 200px; /* Adjust the size of the image as needed */
-    margin-right: 10px;
-}
-
-/* General text styling */
-.attractive-text {
-    font-size: 28px; /* Larger font size for emphasis */
-    font-weight: 300; /* Light font weight for main text */
-    line-height: 1.5; /* Line height for better readability */
-    text-align: center; /* Center-align the text */
-    color: #fff; /* Base text color */
-    padding: 20px; /* Padding around the text */
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
-    border-radius: 10px; /* Rounded corners */
-    max-width: 800px; /* Max width for the paragraph */
-    margin: 0 auto; /* Centering the paragraph */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-}
-
-/* Highlighted text styling */
-.mental-health {
-    font-weight: bold; /* Bold font for emphasis */
-    color: purple; /* Highlight color */
-    font-size: larger;
-}
-
-.process {
-    font-style: bold italic; /* Italic font for emphasis */
-    color: purple; /* Highlight color */
-    font-size: larger;
-}
-
-.highlight {
-    font-weight: bold; /* Bold font for emphasis */
-    color: purple; /* Highlight color */
-    font-size: larger;
-}
-
-/* Add some subtle animations */
-.attractive-text span {
-    display: inline-block; /* Needed for transform */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-.attractive-text span:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    color: #fff; /* Change color on hover */
-}
-
-/* Responsive Design: Adjust text size for smaller screens */
-@media (max-width: 768px) {
-    .attractive-text {
-        font-size: 24px; /* Smaller font size on smaller screens */
-        padding: 15px; /* Adjust padding */
-    }
-}
-
-
-/* Base button styling */
-div > button {
-    background-color: purple;
+.information button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: darkorange;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    font-weight: bold;
-    font-size: large;
-    padding: 10px 20px; /* Adjusted padding for better touch targets */
-    border: none; /* Use none to remove default border */
-    text-align: center;
-    border-radius: 30px;
-    width: 150px;
-    height: auto; /* Use auto height */
-    margin-top: 20px;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
 }
 
-/* Hover effect */
-div > button:hover {
-    background-color: #ff8c00; /* Slightly darker orange */
-    transform: scale(1.05); /* Slightly increase size on hover */
+.information button:hover {
+    background-color: orange;
 }
 
-/* Responsive design: Adjust button styling for smaller screens */
-@media (max-width: 768px) {
-    div > button {
-        width: 100%; /* Full width on smaller screens */
-        padding: 15px 20px; /* Increased padding for better touch targets */
-        font-size: medium; /* Slightly smaller font size */
-    }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-    div > button {
-        font-size: small; /* Smaller font size for extra small devices */
-        padding: 10px; /* Adjusted padding */
-    }
-}
-
-img{
-
-        width: 600px;
-        height: 400px;
-        justify-content: flex-end;
-        margin-top: 60px;
-        border-radius: 50px;
-        margin-bottom: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .content{
