@@ -190,11 +190,10 @@ nav.header-links a:hover {
 
 .content{
     background-image: url('Photos/about.jpg');
-    padding: 80px;
+    padding: 110px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
     width: 100%;
-    height: 100%;
 }
 
 .content > h2{
