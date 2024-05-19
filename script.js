@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".header-links");
+
+    menuToggle.addEventListener("click", function() {
+        navLinks.classList.toggle("active");
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Handle "Find a Therapist" form submission
     const findTherapistForm = document.querySelector('#find-therapist form');
@@ -39,12 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
         registrationForm.reset();
     });
 
-    // Handle "Get Started" button click
-    const getStartedButton = document.querySelector('.information button');
-    getStartedButton.addEventListener('click', function() {
-        // Redirect to the "Find a Therapist" section
-        document.querySelector('#find-therapist').scrollIntoView({ behavior: 'smooth' });
-    });
+   // Handle "Get Started" button click
+const getStartedButton = document.querySelector('.information button');
+getStartedButton.addEventListener('click', function() {
+    // Redirect to the "Find a Therapist" page
+    window.location.href = 'find-a-therapist.html';
+});
 
     // Handle other button interactions if needed
     const searchButton = document.querySelector('.search-button');
