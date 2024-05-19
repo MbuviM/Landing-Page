@@ -239,12 +239,14 @@ div.image-container {
     margin-top: 100px;
     font-size: 32px;
     color: orange;
+    margin-right: 30px;
 }
 
 .input-container {
     position: relative;
     margin-bottom: 20px;
     box-shadow: inset;
+    margin-right: 30px;
 }
 
 .input-container input {
