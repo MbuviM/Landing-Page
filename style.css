@@ -168,7 +168,7 @@ nav.header-links a:hover {
 
 .find-therapist {
     background-image: url('Photos/loupe.png');
-    padding: 60px;
+    padding: 80px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -177,7 +177,7 @@ nav.header-links a:hover {
 }
 
 .find-therapist h2 {
-    margin-top: 300px;
+    margin-top: 100px;
     font-size: 32px;
     color: orange;
 }
@@ -189,7 +189,7 @@ nav.header-links a:hover {
 }
 
 .input-container input {
-    width: 100%;
+    width: 250px;
     padding: 10px 10px 10px 30px;
     border: 2px solid orange;
     border-radius: 10px;
