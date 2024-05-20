@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from .models import Therapist, LANGUAGE_CHOICES, STYLE_CHOICES
 
 """
     Serializer class for the Snippet model.
@@ -24,9 +24,9 @@ from .models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
     - monthly_fee: The monthly fee charged by the therapist.
     - accepts_queer_clients: Indicates whether the therapist accepts queer clients or not.
     """
-class SnippetSerializer(serializers.ModelSerializer):
+class TherapistSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Snippet
+        model = Therapist
         fields = (
             "id",
             "first_name",
