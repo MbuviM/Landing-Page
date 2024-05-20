@@ -1,11 +1,3 @@
-#header-logo > img{
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
-    margin-top: -30px;
-    background-color: beige;
-}
-
 /* General reset for better cross-browser consistency */
 * {
     margin: 0;
@@ -13,9 +5,20 @@
     box-sizing: border-box;
 }
 
+/* Body styles */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* Header logo styles */
+#header-logo > img {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: -30px;
+    background-color: beige;
 }
 
 /* Container for header and main content */
@@ -27,6 +30,7 @@ body {
     overflow: hidden;
 }
 
+/* Header styles */
 .header {
     color: white;
     width: 100%;
@@ -34,71 +38,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1; /* Ensures the header stays above other content */
+    z-index: 1;
 }
 
 #header-logo h1 {
     margin: 0;
 }
 
-.header-links a {
+/* Header links */
+.header-links a, nav.header-links a {
     color: white;
     margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header-links a:hover {
+.header-links a:hover, nav.header-links a:hover {
     text-decoration: underline;
+    background-color: #575757;
+    color: #ffdd57;
 }
 
+/* Main content */
 main {
     width: 100%;
-}
-
-nav.header-links {
-    display: flex; /* Flexbox for the nav links */
-}
-
-nav.header-links a {
-    color: white; /* Text color of the links */
-    text-decoration: none; /* Remove underline from links */
-    padding: 10px 15px; /* Padding around each link */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
-}
-
-nav.header-links a:hover {
-    background-color: #575757; /* Background color on hover */
-    color: #ffdd57; /* Text color on hover */
-}
-
-/* Responsive Design: Adjust header layout for smaller screens */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: flex-start; /* Align items to the left */
-    }
-
-    nav.header-links {
-        flex-direction: column; /* Stack links vertically */
-        width: 100%; /* Take full width */
-    }
-
-    nav.header-links a {
-        width: 100%; /* Take full width */
-        text-align: left; /* Align text to the left */
-        padding: 10px 20px; /* Adjust padding */
-        margin-bottom: 5px; /* Space between links */
-    }
-
-    #header-logo h1 {
-        margin-left: 0; /* Remove left margin */
-        margin-bottom: 10px; /* Add bottom margin */
-    }
-}
-/* General styles */
-body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* Sidebar styles for mobile */
@@ -136,6 +101,7 @@ body {
     margin-left: 50px;
 }
 
+/* Open button styles */
 #main .openbtn {
     font-size: 20px;
     cursor: pointer;
@@ -195,14 +161,14 @@ body {
     }
 }
 
-
+/* Information section */
 .information {
-    position: relative; /* Positioning context for absolute children */
-    height: 600px; /* Height of the section, adjust as needed */
+    position: relative;
+    height: 600px;
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    text-align: center; /* Center-align text */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 20px;
 }
 
