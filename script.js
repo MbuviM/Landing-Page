@@ -89,3 +89,34 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Register button not found');
     }
 });
+
+// JavaScript function to fetch and display therapists
+function fetchTherapists() {
+    fetch('http://127.0.0.1:8000/therapists/user/')  // Sending GET request to fetch therapists
+        .then(response => response.json())
+        .then(data => {
+            // Process and display therapist data here
+        })
+        .catch(error => {
+            console.error('Error fetching therapists:', error);
+        });
+}
+
+// JavaScript function to add a new therapist
+function addTherapist(newTherapistData) {
+    fetch('http://127.0.0.1:8000/therapists/user/create/', {
+        method: 'POST',  // Sending POST request to add a therapist
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newTherapistData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Process response data if needed
+        console.log('New therapist added successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error adding therapist:', error);
+    });
+}
