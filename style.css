@@ -28,6 +28,10 @@ body {
     background-size: cover;
     width: 100%;
     overflow: hidden;
+    display: flex; 
+    flex-direction: column;  
+    align-items: center;  
+      
 }
 
 /* Header styles */
@@ -39,6 +43,11 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1;
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
+    
 }
 
 #header-logo h1 {
@@ -59,6 +68,11 @@ body {
     text-decoration: underline;
     background-color: #575757;
     color: #ffdd57;
+}
+
+#main {
+    display: flex;
+    align-items: center;
 }
 
 /* Main content */
@@ -158,6 +172,17 @@ main {
 
     .navbar {
         display: flex;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;  /* Display navbar as flex on larger screens */
+        gap: 20px;  /* Space out the links */
+    }
+
+    #mySidebar, .openbtn {
+        display: none;  /* Hide sidebar and open button on larger screens */
     }
 }
 
