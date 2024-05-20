@@ -1,10 +1,7 @@
 from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
-from therapists import views
+from .views import TherapistList, TherapistDetail
 
 urlpatterns = [
-    path("therapists/", views.SnippetList.as_view()),
-    path("therapists/<int:pk>/", views.SnippetDetail.as_view()),
+    path('therapists/', TherapistList.as_view()),
+    path('therapists/<int:pk>/', TherapistDetail.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
