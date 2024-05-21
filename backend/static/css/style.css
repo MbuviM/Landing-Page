@@ -252,7 +252,7 @@ div.image-container {
 }
 
 .find-therapist {
-    background-image: url('Photos/loupe.png');
+    background-color: grey;
     padding: 120px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
