@@ -16,10 +16,19 @@ def index(request):
     }
     return Response(urls)
 
-# List all users
+# Get a therapist
 @api_view(['GET'])
-def listUsers(request):
+def search_therapists(request):
+    location = request.GET.get('location')
+    type_of_therapy = request.GET.get('type_of_therapy')
+
+    # Filter therapists based on query parameters
     therapists = Therapist.objects.all()
+    if location:
+        therapists = therapists.filter(location__icontains=location)
+    if type_of_therapy:
+        therapists = therapists.filter(type_of_therapy__icontains=type_of_therapy)
+
     serializer = TherapistSerializer(therapists, many=True)
     return Response(serializer.data)
 
