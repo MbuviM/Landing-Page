@@ -90,33 +90,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// JavaScript function to fetch and display therapists
-function fetchTherapists() {
-    fetch('http://127.0.0.1:8000/therapists/user/')  // Sending GET request to fetch therapists
-        .then(response => response.json())
-        .then(data => {
-            // Process and display therapist data here
-        })
-        .catch(error => {
-            console.error('Error fetching therapists:', error);
-        });
-}
+document.getElementById('therapist-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('first_name', document.getElementById('first_name').value);
+    formData.append('last_name', document.getElementById('last_name').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('phone', document.getElementById('phone').value);
+    formData.append('address', document.getElementById('address').value);
+    formData.append('location', document.getElementById('location').value);
+    formData.append('gender', document.getElementById('gender').value);
+    formData.append('age', document.getElementById('age').value);
+    formData.append('type_of_therapy', document.getElementById('type_of_therapy').value);
+    formData.append('years_of_experience', document.getElementById('years_of_experience').value);
+    formData.append('image', document.getElementById('image').files[0]);
+    formData.append('fee_per_session', document.getElementById('fee_per_session').value);
+    formData.append('monthly_slots', document.getElementById('monthly_slots').value);
+    formData.append('monthly_fee', document.getElementById('monthly_fee').value);
+    formData.append('accepts_queer_clients', document.getElementById('accepts_queer_clients').checked);
 
-// JavaScript function to add a new therapist
-function addTherapist(newTherapistData) {
     fetch('http://127.0.0.1:8000/therapists/user/create/', {
-        method: 'POST',  // Sending POST request to add a therapist
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newTherapistData)
+        method: 'POST',
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
-        // Process response data if needed
-        console.log('New therapist added successfully:', data);
+        if (data.id) {
+            alert('Therapist registered successfully!');
+        } else {
+            alert('Error: ' + JSON.stringify(data));
+        }
     })
     .catch(error => {
-        console.error('Error adding therapist:', error);
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
     });
-}
+});
+
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const location = document.getElementById('location').value;
+    const therapyType = document.getElementById('therapy-type').value;
+
+    fetch(`http://127.0.0.1:8000/therapists/search/?location=${location}&type_of_therapy=${therapyType}`, {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        if (data.length > 0) {
+            data.forEach(therapist => {
+                const therapistDiv = document.createElement('div');
+                therapistDiv.innerHTML = `
+                    <h3>${therapist.first_name} ${therapist.last_name}</h3>
+                    <p>Location: ${therapist.location}</p>
+                    <p>Specialization: ${therapist.type_of_therapy}</p>
+                    <p>Years of Experience: ${therapist.years_of_experience}</p>
+                `;
+                resultsDiv.appendChild(therapistDiv);
+            });
+        } else {
+            resultsDiv.innerHTML = '<p>No therapists found matching your criteria.</p>';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
