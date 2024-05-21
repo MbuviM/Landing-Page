@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Therapist Connect</title>
+<body>
+    <link rel="stylesheet" href="style.css">
+    
+    <div id="header-logo">
+        <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
+        <h1>Therapist Connect</h1>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="find-a-therapist.html">Find a Therapist</a>
+        <a href="therapists.html">Registration</a>
+    </div>
+      
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="find-a-therapist.html">Find a Therapist</a>
+        <a href="therapists.html">Registration</a>
+    </div>
+
+<section id="find-therapist" class="find-therapist">
+    <h2>Find a Therapist</h2>
+    <form>
+        <div class="input-container">
+            <input type="text" id="location" placeholder="Enter your location">
+        </div>
+        <div class="input-container">
+            <input type="text" id="therapy-type" placeholder="Enter the type of therapy">
+        </div>
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</section>
+<div class="footer">
+    <p>Copyright &copy; Therapist Connect 2024</p>
+</div>
+<script src="{% static ‘script.js’ %}"></script>
+</body>
+</head>
+</html>
