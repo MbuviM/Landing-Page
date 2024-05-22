@@ -1,3 +1,4 @@
+{%  load static  %}
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -17,10 +18,10 @@
 
                 <div id="mySidebar" class="sidebar">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="find-a-therapist.html">Find a Therapist</a>
-                    <a href="therapists.html">Registration</a>
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                    <a href="{% url 'therapists' %}">Registration</a>
                 </div>
                   
                 <div id="main">
@@ -28,10 +29,10 @@
                 </div>
             
                 <div class="navbar">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="find-a-therapist.html">Find a Therapist</a>
-                    <a href="therapists.html">Registration</a>
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                    <a href="{% url 'therapists' %}">Registration</a>
                 </div>
             </header>
     

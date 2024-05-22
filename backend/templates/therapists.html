@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +7,7 @@
         <meta charset="UTF-8">
         <title>Therapist Connect</title>
 <body>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <div id="header-logo">
@@ -15,10 +17,10 @@
     
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="find-a-therapist.html">Find a Therapist</a>
-        <a href="therapists.html">Registration</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+        <a href="{% url 'therapists' %}">Registration</a>
     </div>
       
     <div id="main">
@@ -26,10 +28,10 @@
     </div>
 
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="find-a-therapist.html">Find a Therapist</a>
-        <a href="therapists.html">Registration</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+        <a href="{% url 'therapists' %}">Registration</a>
     </div>
 
 <section id="therapist-registration" class="therapist-registration">
@@ -89,7 +91,7 @@
     <p>Copyright &copy; Therapist Connect 2024</p>
 </div>
 
-<script src="{% static ‘script.js’ %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>
