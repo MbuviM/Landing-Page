@@ -58,17 +58,29 @@
     {% if form.is_bound and form.is_valid %}
     {% if therapists %}
         <div class="results-container">
+            <h2>{{ therapists|length }} therapists found</h2>
             {% for therapist in therapists %}
             <div class="therapist-box" onclick="toggleDetails(this)">
-                <h3>Name: {{ therapist.first_name }} {{ therapist.last_name }}</h3>
-                <p>Location: {{ therapist.location }}</p>
-                <p>Therapy: {{ therapist.type_of_therapy }}</p>
+                <div class="circle-img">
+                    <img src="{{ therapist.image.url }}" ">
+                </div>
+                <div class="center-text">
+                    <h3>{{ therapist.first_name }} {{ therapist.last_name }}</h3>
+                    <p>{{ therapist.location}}</p>
+                    <p>{{ therapist.type_of_therapy }}</p>
+                </div>
                 <div class="therapist-details">
+                    <p>Name: {{ therapist.first_name }} {{ therapist.last_name }}</p>
                     <p>Email: {{ therapist.email }}</p>
                     <p>Phone: {{ therapist.phone }}</p>
                     <p>Address: {{ therapist.address }}</p>
                     <p>Gender: {{ therapist.gender }}</p>
                     <p>Age: {{ therapist.age }}</p>
+                    <p>Years of Experience: {{ therapist.years_of_experience }}</p>
+                    <p>Fee per Session: {{ therapist.fee_per_session }}</p>
+                    <p>Monthly Slots: {{ therapist.monthly_slots }}</p>
+                    <p>Monthly Fee: {{ therapist.monthly_fee }}</p>
+                    <p>Accepts Queer Clients: {% if therapist.accepts_queer_clients %}Yes{% else %}No{% endif %}</p>
                     <!-- Add more details here -->
                 </div>
             </div>
@@ -84,21 +96,32 @@
         <h2>All Therapists</h2>
         {% for therapist in all_therapists %}
         <div class="therapist-box" onclick="toggleDetails(this)">
-            <h3>Name: {{ therapist.first_name }} {{ therapist.last_name }}</h3>
-            <p>Location: {{ therapist.location }}</p>
-            <p>Therapy: {{ therapist.type_of_therapy }}</p>
+            <div class="circle-img">
+                <img src="{{ therapist.image.url }}" alt="{{ therapist.first_name }} {{ therapist.last_name }}">
+            </div>
+            <div class="center-text">
+                <h3>{{ therapist.location }}</h3>
+                <p>{{ therapist.type_of_therapy }}</p>
+            </div>
             <div class="therapist-details">
+                <p>Name: {{ therapist.first_name }} {{ therapist.last_name }}</p>
                 <p>Email: {{ therapist.email }}</p>
                 <p>Phone: {{ therapist.phone }}</p>
                 <p>Address: {{ therapist.address }}</p>
                 <p>Gender: {{ therapist.gender }}</p>
                 <p>Age: {{ therapist.age }}</p>
+                <p>Years of Experience: {{ therapist.years_of_experience }}</p>
+                <p>Fee per Session: {{ therapist.fee_per_session }}</p>
+                <p>Monthly Slots: {{ therapist.monthly_slots }}</p>
+                <p>Monthly Fee: {{ therapist.monthly_fee }}</p>
+                <p>Accepts Queer Clients: {% if therapist.accepts_queer_clients %}Yes{% else %}No{% endif %}</p>
                 <!-- Add more details here -->
             </div>
         </div>
         {% endfor %}
     </div>
 {% endif %}
+
 
    
     <div class="footer">
