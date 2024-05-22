@@ -11,24 +11,26 @@ Therapist Connect is a web application designed to help users find therapists an
 ## Technologies Used
 - **HTML5:** Structure of the website.
 - **CSS3:** Styling the website for a visually appealing design.
-- **JavaScript:** Interactive elements and form validation (if implemented).
+- **JavaScript:** Interactive elements and form validation .
 - **Backend (Python-Django):** For handling data storage and user authentication.
 
 ## File Structure
 ```
 therapist-connect/
 │
-├── index.html
-├── styles/
-│   ├── style.css
-├── scripts/
-│   ├── script.js
-├── photos/
-├── README.md
+├── .venv
 ├── backend/
-├──Pipfile.lock
-├── Pipfile
-
+│   ├── staticfiles/
+├── static/
+│   ├── css/
+│   ├── js/
+│   ├── Photos/
+├── templates/
+├── therapists/
+├── manage.py
+├──Pipfile
+├── Pipfile.lock
+├── README.md
 
 ```
 
