@@ -33,7 +33,7 @@ def index(request):
     return Response(urls)
 
 def search_therapists(request):
-    form = TherapistSearchForm(request.GET or None)
+    form = TherapistForm(request.GET or None)
     therapists = []
 
     if form.is_valid():
