@@ -32,43 +32,24 @@ def index(request):
     }
     return Response(urls)
 
-# Search for therapists
 def search_therapists(request):
-    if request.method == 'GET':
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            location = form.cleaned_data.get('location')
-            therapy_type = form.cleaned_data.get('therapy_type')
+    form = TherapistSearchForm(request.GET or None)
+    therapists = []
 
-            # Perform search only if both location and therapy type are provided
-            if location and therapy_type:
-                therapists = Therapist.objects.filter(location=location, type_of_therapy=therapy_type)
-            else:
-                therapists = []  # Return an empty list if any field is empty
-        else:
-            therapists = []  # Return an empty list if form is not valid
-    else:
-        form = SearchForm()
-        therapists = []  # Return an empty list if request method is not GET
+    if form.is_valid():
+        location = form.cleaned_data.get('location')
+        therapy_type = form.cleaned_data.get('therapy_type')
 
-    return render(request, 'search_page.html', {'form': form, 'therapists': therapists})
-
-
-# Get a therapist
-@api_view(['GET'])
-def search_therapists(request):
-    location = request.GET.get('location')
-    type_of_therapy = request.GET.get('type_of_therapy')
-
-    # Filter therapists based on query parameters
-    therapists = Therapist.objects.all()
-    if location:
-        therapists = therapists.filter(location__icontains=location)
-    if type_of_therapy:
-        therapists = therapists.filter(type_of_therapy__icontains=type_of_therapy)
-
-    serializer = TherapistSerializer(therapists, many=True)
-    return Response(serializer.data)
+        if location or therapy_type:
+            query = {}
+            if location:
+                query['location__iexact'] = location
+            if therapy_type:
+                query['type_of_therapy__iexact'] = therapy_type
+            
+            therapists = Therapist.objects.filter(**query)
+    
+    return render(request, 'find-a-therapist.html', {'form': form, 'therapists': therapists})
 
 # Add a user
 @api_view(['POST'])
