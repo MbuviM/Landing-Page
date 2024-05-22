@@ -58,7 +58,6 @@
     {% if form.is_bound and form.is_valid %}
     {% if therapists %}
         <div class="results-container">
-            <h2>{{ therapists|length }} therapists found</h2>
             {% for therapist in therapists %}
             <div class="therapist-box" onclick="toggleDetails(this)">
                 <div class="circle-img">
