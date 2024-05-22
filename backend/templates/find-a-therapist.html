@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Therapist Connect</title>
-<body>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+</head>
+<body>
     <div id="header-logo">
         <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
         <h1>Therapist Connect</h1>
@@ -21,7 +21,7 @@
         <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
         <a href="{% url 'therapists' %}">Registration</a>
     </div>
-      
+
     <div id="main">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
     </div>
@@ -33,22 +33,34 @@
         <a href="{% url 'therapists' %}">Registration</a>
     </div>
 
-<section id="find-therapist" class="find-therapist">
-    <h2>Find a Therapist</h2>
-    <form>
-        <div class="input-container">
-            <input type="text" id="location" placeholder="Enter your location">
-        </div>
-        <div class="input-container">
-            <input type="text" id="therapy-type" placeholder="Enter the type of therapy">
-        </div>
-        <button type="submit" class="search-button">Search</button>
-    </form>
-</section>
-<div class="footer">
-    <p>Copyright &copy; Therapist Connect 2024</p>
-</div>
-<script src="{% static 'js/script.js' %}"></script>
+    <div class="search-container">
+        <h2>Find a Therapist</h2>
+        <form method="get">
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if form.is_bound and form.is_valid %}
+    <div class="results-container">
+        <h2>Search Results:</h2>
+        <ul>
+            {% for therapist in therapists %}
+                <li>
+                    <strong>Name:</strong> {{ therapist.first_name }} {{ therapist.last_name }}<br>
+                    <strong>Location:</strong> {{ therapist.location }}<br>
+                    <strong>Type of Therapy:</strong> {{ therapist.type_of_therapy }}<br>
+                    <!-- Add more details here as needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="footer">
+        <p>Copyright &copy; Therapist Connect 2024</p>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
-</head>
 </html>
