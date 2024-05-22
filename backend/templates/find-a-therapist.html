@@ -61,7 +61,7 @@
             {% for therapist in therapists %}
             <div class="therapist-box" onclick="toggleDetails(this)">
                 <div class="circle-img">
-                    <img src="{{ therapist.image.url }}" ">
+                    <img src="{% static 'Photos/user.png' %}" style="width: 50px; height: auto;">
                 </div>
                 <div class="center-text">
                     <h3>{{ therapist.first_name }} {{ therapist.last_name }}</h3>
@@ -96,7 +96,7 @@
         {% for therapist in all_therapists %}
         <div class="therapist-box" onclick="toggleDetails(this)">
             <div class="circle-img">
-                <img src="{{ therapist.image.url }}" alt="{{ therapist.first_name }} {{ therapist.last_name }}">
+                <img src="{% static 'Photos/user.png' %}" alt="{{ therapist.first_name }} {{ therapist.last_name }}" style="width: 50px; height: auto;">
             </div>
             <div class="center-text">
                 <h3>{{ therapist.location }}</h3>
