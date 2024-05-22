@@ -7,10 +7,24 @@
     <meta charset="UTF-8">
     <title>Therapist Connect</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .therapist-box {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .therapist-details {
+            display: none;
+            margin-top: 10px;
+        }
+        .therapist-box.active .therapist-details {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div id="header-logo">
-        <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
         <h1>Therapist Connect</h1>
     </div>
 
@@ -42,25 +56,60 @@
     </div>
 
     {% if form.is_bound and form.is_valid %}
-    <div class="results-container">
-        <h2>Search Results:</h2>
-        <ul>
+    {% if therapists %}
+        <div class="results-container">
             {% for therapist in therapists %}
-                <li>
-                    <strong>Name:</strong> {{ therapist.first_name }} {{ therapist.last_name }}<br>
-                    <strong>Location:</strong> {{ therapist.location }}<br>
-                    <strong>Type of Therapy:</strong> {{ therapist.type_of_therapy }}<br>
-                    <!-- Add more details here as needed -->
-                </li>
+            <div class="therapist-box" onclick="toggleDetails(this)">
+                <h3>Name: {{ therapist.first_name }} {{ therapist.last_name }}</h3>
+                <p>Location: {{ therapist.location }}</p>
+                <p>Therapy: {{ therapist.type_of_therapy }}</p>
+                <div class="therapist-details">
+                    <p>Email: {{ therapist.email }}</p>
+                    <p>Phone: {{ therapist.phone }}</p>
+                    <p>Address: {{ therapist.address }}</p>
+                    <p>Gender: {{ therapist.gender }}</p>
+                    <p>Age: {{ therapist.age }}</p>
+                    <!-- Add more details here -->
+                </div>
+            </div>
             {% endfor %}
-        </ul>
-    </div>
+        </div>
+    {% else %}
+        <div class="results-container">
+            <p>No therapists found.</p>
+        </div>
     {% endif %}
+{% else %}
+    <div class="results-container">
+        <h2>All Therapists</h2>
+        {% for therapist in all_therapists %}
+        <div class="therapist-box" onclick="toggleDetails(this)">
+            <h3>Name: {{ therapist.first_name }} {{ therapist.last_name }}</h3>
+            <p>Location: {{ therapist.location }}</p>
+            <p>Therapy: {{ therapist.type_of_therapy }}</p>
+            <div class="therapist-details">
+                <p>Email: {{ therapist.email }}</p>
+                <p>Phone: {{ therapist.phone }}</p>
+                <p>Address: {{ therapist.address }}</p>
+                <p>Gender: {{ therapist.gender }}</p>
+                <p>Age: {{ therapist.age }}</p>
+                <!-- Add more details here -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
+   
     <div class="footer">
         <p>Copyright &copy; Therapist Connect 2024</p>
     </div>
 
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        function toggleDetails(element) {
+            element.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
