@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import SearchForm, TherapistForm
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_protect
 
 def home(request):
     return render(request, 'index.html')
@@ -19,6 +21,9 @@ def find_a_therapist(request):
 
 def therapist_registration(request):
     return render(request, 'therapists.html')
+
+def success(request):
+    return render(request, 'success.html')
 
 # Create your views here.
 @api_view(['GET'])
@@ -77,12 +82,45 @@ def find_a_therapist(request):
         form = SearchForm()
     return render(request, 'find-a-therapist.html', {'form': form})
 
-def therapist_registration(request):
+# Register a therapist
+@csrf_protect
+
+def therapist_register(request):
     if request.method == 'POST':
-        form = TherapistForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = TherapistForm()
-    return render(request, 'therapists.html', {'form': form})
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        location = request.POST.get('location')
+        gender = request.POST.get('gender')
+        age = request.POST.get('age')
+        type_of_therapy = request.POST.get('type_of_therapy')
+        years_of_experience = request.POST.get('years_of_experience')
+        image = request.FILES.get('image')
+        fee_per_session = request.POST.get('fee_per_session')
+        monthly_slots = request.POST.get('monthly_slots')
+        monthly_fee = request.POST.get('monthly_fee')
+        accepts_queer_clients = request.POST.get('accepts_queer_clients') == 'on'
+
+        therapist = Therapist(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone,
+            address=address,
+            location=location,
+            gender=gender,
+            age=age,
+            type_of_therapy=type_of_therapy,
+            years_of_experience=years_of_experience,
+            image=image,
+            fee_per_session=fee_per_session,
+            monthly_slots=monthly_slots,
+            monthly_fee=monthly_fee,
+            accepts_queer_clients=accepts_queer_clients
+        )
+        therapist.save()
+        return redirect('success')  # Replace with your success page URL
+
+    return render(request, 'therapists.html')
