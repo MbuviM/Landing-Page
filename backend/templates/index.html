@@ -9,11 +9,11 @@
     <body>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <div class="container">
             <header class="header">
                 <div id="header-logo">
-                    <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
-                    <h1>Therapist Connect</h1>
+                    <img src="{% static 'Photos/logo.svg' %}" alt="Therapist Connect Logo"> 
                 </div>
 
                 <div id="mySidebar" class="sidebar">
@@ -38,7 +38,12 @@
     
             <main>
                 <div class="information">
-                        <button>Get Started</button>
+                    <p>
+                        <span class="highlight">Mental Health</span> 
+                        <br>is not a destination but a <br>
+                        <span class="highlight">process.</span>
+                    </p>
+                    <button>Get Started</button>
                 </div>
             </main>
         </div>
