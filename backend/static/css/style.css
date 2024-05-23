@@ -36,13 +36,12 @@ body {
     display: flex; 
     flex-direction: column;  
     align-items: center; 
+    margin-top: 60px; /* Add margin-top to account for fixed header */
 }
 
 /* Header styles */
 .header {
-    color: black;
     width: 100%;  /* Full width for the header */
-    max-width: 800px;  /* Max width for larger screens */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -52,11 +51,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0; /* Adjusted to 0 to prevent offset issues */
     z-index: 1000;
     border-radius: 0 0 10px 10px;
 }
+
 
 #header-logo h1 {
     margin: 0;
@@ -92,24 +91,31 @@ main {
 }
 
 /* Sidebar styles for mobile */
+/* Sidebar styles for mobile */
 .sidebar {
-    height: 100%;
-    width: 0;
+    height: 100%; /* Full height */
+    width: 0; /* Start with width 0 for the sliding effect */
     position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    top: 0; /* Top of the screen */
+    right: 0; /* Start from the right */
+    background: linear-gradient(to right, #ffecd2 0%, white 100%);
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    transition: 0.5s; /* Smooth transition */
+    z-index: 1000; /* Ensure it is above other elements */
+    padding-top: 60px; /* Padding at the top */
 }
+
+/* Ensure the rest of the page content is not scrollable when sidebar is open */
+body.sidebar-open {
+    overflow: hidden;
+}
+
 
 .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
 }
@@ -128,22 +134,20 @@ main {
 
 /* Open button styles */
 #main .openbtn {
-    font-size: 20px;
     cursor: pointer;
-    background-color: black;
-    color: purple;
+    background-color: transparent;
     padding: 10px 15px;
     border: none;
     position: fixed;
     top: 15px;
-    left: 15px;
+    right: 15px;
     z-index: 2;
-    justify-content: left;
 }
 
 #main .openbtn img.hamburger-icon {
     width: 30px;
     height: 30px;
+    
 }
 
 /* Navbar styles for desktop */
@@ -277,37 +281,63 @@ main {
 }
 
 .content{
-    background-image: url('Photos/about.jpg');
-    padding: 110px;
+    background-image: url('Photos/pexels-belle-co-99483-1000445.jpg');
+    padding: 80px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-size: cover;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 
-.content > h2{
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-top: 40px;
+
 }
 
-.content > p{
-    font-size: 18px;
-    color: #1F2937;
-    font-weight: lighter;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.line {
+    width: 4px;
+    height: 200px;
+    background-color: #333;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
-div.image-container {
-    overflow: auto;
-    white-space: nowrap;
-    padding: 10px;
+.text {
+    flex: 1;
+}
+h2{
+    font-size: 48px;
+    color: #333;
+    margin: 0;
+    margin-bottom: 80px;
 
-  }
-  
-  div.image-container img {
-    padding: 10px;
-  }
+}
+.sentence {
+    opacity: 0;
+    animation: slideIn 1s forwards;
+    font-size: 20px;
+    margin-top: -60px;
+}
+
+.right {
+    animation-delay: 0.5s; /* Delay for right sentences */
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* General reset for better cross-browser consistency */
 * {
     margin: 0;
@@ -467,7 +497,7 @@ div.image-container {
 .footer {
     text-align: center;
     padding: 10px 20px;
-    background: linear-gradient(to right, #ffecd2 0%, white 100%);
+    background-color: white;
     color: black;
     position: fixed;
     bottom: 0;
