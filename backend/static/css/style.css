@@ -1,3 +1,4 @@
+
 /* General reset for better cross-browser consistency */
 * {
     margin: 0;
@@ -16,38 +17,43 @@ body {
 #header-logo > img {
     width: 100px;
     height: 100px;
-    margin-left: 10px;
-    margin-top: -30px;
-    background-color: beige;
+    margin-left: 20px;
+    margin-top: 2px; 
+    background-color: rgba(255, 255, 255);
+    opacity: 0.8;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Container for header and main content */
 .container {
     position: relative;
-    background: url('Photos/mental-health2.jpg') no-repeat center center;
+    background-color: #111;
     background-size: cover;
     width: 100%;
     overflow: hidden;
     display: flex; 
     flex-direction: column;  
-    align-items: center;  
-      
+    align-items: center; 
 }
 
 /* Header styles */
 .header {
-    color: white;
-    width: 100%;
+    color: black;
+    width: 800px;  /* Fixed width for the header */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
-    display: flex;  
-    justify-content: space-between;  
-    align-items: center;  
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
-    
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% transparency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    border-radius:0 0 10px 10px ;
 }
 
 #header-logo h1 {
@@ -56,7 +62,7 @@ body {
 
 /* Header links */
 .header-links a, nav.header-links a {
-    color: white;
+    color: black; /* Change header link names to black */
     margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
@@ -73,11 +79,13 @@ body {
 #main {
     display: flex;
     align-items: center;
+    margin-top: 60px; /* Add this to prevent content from hiding under the fixed header */
 }
 
 /* Main content */
 main {
     width: 100%;
+    height: 100%;
 }
 
 /* Sidebar styles for mobile */
@@ -186,31 +194,45 @@ main {
     }
 }
 
-/* Information section */
 .information {
-    position: relative;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    margin: 20px auto;
     padding: 20px;
+    background-color: none;
+    border-radius: 8px;
+    margin-bottom: 80px;
+    height: 100vh; /* Set the height to the full viewport height */
+    
+}
+
+.information p {
+    font-size: 32px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 150px;
+    color: white;
+}
+
+.information p .highlight {
+    color: palevioletred; /* Change this color to your desired color */
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 90px;
 }
 
 .information button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: darkorange;
-    color: #fff;
+    background-color: goldenrod; /* Button background color */
+    color: white; /* Button text color */
     border: none;
-    border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
 .information button:hover {
-    background-color: orange;
+    background-color: orangered; /* Button background color on hover */
 }
 
 .content{
@@ -399,13 +421,17 @@ div.image-container {
     }
 }
 
+/* Footer styles */
 .footer {
-    background-color: #1F2937;
-    padding: 10px;
-    p{
-        text-align: center;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        color: white;
-        font-size: 10px;
-    }
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 10px 0;
 }
