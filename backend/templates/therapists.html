@@ -6,34 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <title>Therapist Connect</title>
-<body>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <div id="header-logo">
-        <!-- <img src="Photos/Therapist-Connect4.png" alt="Therapist Connect Logo"> -->
-        <h1>Therapist Connect</h1>
-    </div>
-
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-        <a href="{% url 'therapists' %}">Registration</a>
-    </div>
-
-    <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776;</button>
-    </div>
-
-    <div class="navbar">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-        <a href="{% url 'therapists' %}">Registration</a>
-    </div>
-
+        <body>
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+            <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            
+            <div class="container">
+                <header class="header">
+                    <div id="header-logo">
+                        <img src="{% static 'Photos/logo.svg' %}" alt="Therapist Connect Logo"> 
+                    </div>
+        
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'about' %}">About</a>
+                        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                        <a href="{% url 'therapists' %}">Registration</a>
+                    </div>
+                      
+                    <div id="main">
+                        <button class="openbtn" onclick="openNav()"</button>
+                        <img src="{% static 'Photos/interface.png' %}" alt="Menu" class="hamburger-icon">
+                    </div>
+                
+                    <div class="navbar">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'about' %}">About</a>
+                        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                        <a href="{% url 'therapists' %}">Registration</a>
+                    </div>
+                </header>
+        
 <section id="therapist-registration" class="therapist-registration">
     <h2>Therapist Registration</h2>
     <p>If you are a therapist, please fill out the form below to add your information to our directory.</p>

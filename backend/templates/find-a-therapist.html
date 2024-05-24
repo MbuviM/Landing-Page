@@ -24,28 +24,36 @@
     </style>
 </head>
 <body>
-    <div id="header-logo">
-        <h1>Therapist Connect</h1>
-    </div>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <div class="container">
+        <header class="header">
+            <div id="header-logo">
+                <img src="{% static 'Photos/logo.svg' %}" alt="Therapist Connect Logo"> 
+            </div>
 
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-        <a href="{% url 'therapists' %}">Registration</a>
-    </div>
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                <a href="{% url 'therapists' %}">Registration</a>
+            </div>
+              
+            <div id="main">
+                <button class="openbtn" onclick="openNav()"</button>
+                <img src="{% static 'Photos/interface.png' %}" alt="Menu" class="hamburger-icon">
+            </div>
+        
+            <div class="navbar">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                <a href="{% url 'therapists' %}">Registration</a>
+            </div>
+        </header>
 
-    <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776;</button>
-    </div>
-
-    <div class="navbar">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-        <a href="{% url 'therapists' %}">Registration</a>
-    </div>
 
     <div class="search-container">
         <h2>Find a Therapist</h2>
