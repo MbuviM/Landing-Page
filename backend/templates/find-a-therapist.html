@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,148 +6,91 @@
     <meta charset="UTF-8">
     <title>Therapist Connect</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        .therapist-box {
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .therapist-details {
-            display: none;
-            margin-top: 10px;
-        }
-        .therapist-box.active .therapist-details {
-            display: block;
-        }
-    </style>
 </head>
-<body>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src=”https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
-    <div class="container">
-        <header class="header">
-            <div id="header-logo">
-                <img src="{% static 'Photos/logo-2.svg' %}" alt="Therapist Connect Logo"> 
-            </div>
+<body class="therapist-connect-page">
+    <div class="background-wrapper">
+        <div class="search-container">
+            <header class="header">
+                <div id="header-logo">
+                    <img src="{% static 'Photos/logo-2.svg' %}" alt="Therapist Connect Logo">
+                </div>
 
-            <div id="mySidebar" class="sidebar">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'about' %}">About</a>
-                <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-                <a href="{% url 'therapists' %}">Registration</a>
-            </div>
-              
-            <div id="main">
-                <button class="openbtn" onclick="openNav()"</button>
-                <img src="{% static 'Photos/interface.png' %}" alt="Menu" class="hamburger-icon">
-            </div>
-        
-            <div class="navbar">
-                <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'about' %}">About</a>
-                <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
-                <a href="{% url 'therapists' %}">Registration</a>
-            </div>
-        </header>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                    <a href="{% url 'therapists' %}">Registration</a>
+                </div>
 
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">
+                        <img src="{% static 'Photos/interface.png' %}" class="hamburger-icon">
+                    </button>
+                </div>
 
-    <div class="search-container">
-        <h2>Find a Therapist</h2>
-        <form method="get">
-            {{ form.as_p }}
-            <button type="submit">Search</button>
-        </form>
+                <div class="navbar">
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'find_a_therapist' %}">Find a Therapist</a>
+                    <a href="{% url 'therapists' %}">Registration</a>
+                </div>
+            </header>
+
+            <div class="search-box">
+                <input type="text" id="location-input" placeholder="Enter location">
+                <input type="text" id="therapy-input" placeholder="Enter type of therapy">
+                <button id="search-button">Search</button>
+            </div>
+            <div id="results" class="results">
+                <span class="section-title">Therapists</span>
+                <!-- Results will be appended here -->
+            </div>
+        </div>
     </div>
 
-    {% if form.is_bound and form.is_valid %}
-    {% if therapists %}
-        <div class="results-container">
-            {% for therapist in therapists %}
-            <div class="therapist-box" onclick="toggleDetails(this)">
-                <div class="circle-img">
-                    <img src="{% static 'Photos/user.png' %}" style="width: 50px; height: auto;">
-                </div>
-                <div class="center-text">
-                    <h3>{{ therapist.first_name }} {{ therapist.last_name }}</h3>
-                    <p>{{ therapist.location}}</p>
-                    <p>{{ therapist.type_of_therapy }}</p>
-                </div>
-                <div class="therapist-details">
-                    <p>Name: {{ therapist.first_name }} {{ therapist.last_name }}</p>
-                    <p>Email: {{ therapist.email }}</p>
-                    <p>Phone: {{ therapist.phone }}</p>
-                    <p>Address: {{ therapist.address }}</p>
-                    <p>Gender: {{ therapist.gender }}</p>
-                    <p>Age: {{ therapist.age }}</p>
-                    <p>Years of Experience: {{ therapist.years_of_experience }}</p>
-                    <p>Fee per Session: {{ therapist.fee_per_session }}</p>
-                    <p>Monthly Slots: {{ therapist.monthly_slots }}</p>
-                    <p>Monthly Fee: {{ therapist.monthly_fee }}</p>
-                    <p>Accepts Queer Clients: {% if therapist.accepts_queer_clients %}Yes{% else %}No{% endif %}</p>
-                    <!-- Add more details here -->
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="results-container">
-            <p>No therapists found.</p>
-        </div>
-    {% endif %}
-{% else %}
-    <div class="results-container">
-        <h2>All Therapists</h2>
-        {% for therapist in all_therapists %}
-        <div class="therapist-box" onclick="toggleDetails(this)">
-            <div class="circle-img">
-                <img src="{% static 'Photos/user.png' %}" alt="{{ therapist.first_name }} {{ therapist.last_name }}" style="width: 50px; height: auto;">
-            </div>
-            <div class="center-text">
-                <h3>{{ therapist.location }}</h3>
-                <p>{{ therapist.type_of_therapy }}</p>
-            </div>
-            <div class="therapist-details">
-                <p>Name: {{ therapist.first_name }} {{ therapist.last_name }}</p>
-                <p>Email: {{ therapist.email }}</p>
-                <p>Phone: {{ therapist.phone }}</p>
-                <p>Address: {{ therapist.address }}</p>
-                <p>Gender: {{ therapist.gender }}</p>
-                <p>Age: {{ therapist.age }}</p>
-                <p>Years of Experience: {{ therapist.years_of_experience }}</p>
-                <p>Fee per Session: {{ therapist.fee_per_session }}</p>
-                <p>Monthly Slots: {{ therapist.monthly_slots }}</p>
-                <p>Monthly Fee: {{ therapist.monthly_fee }}</p>
-                <p>Accepts Queer Clients: {% if therapist.accepts_queer_clients %}Yes{% else %}No{% endif %}</p>
-                <!-- Add more details here -->
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-{% endif %}
-   
     <div class="footer">
         <p>Copyright &copy; Therapist Connect 2024</p>
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchButton = document.getElementById('search-button');
+            const locationInput = document.getElementById('location-input');
+            const therapyInput = document.getElementById('therapy-input');
+            const resultsContainer = document.getElementById('results');
+
+            searchButton.addEventListener('click', () => {
+                const location = locationInput.value.toLowerCase();
+                const therapy = therapyInput.value.toLowerCase();
+
+                fetch(`/search_therapists?location=${location}&therapy=${therapy}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        resultsContainer.innerHTML = '';
+                        if (data.length > 0) {
+                            data.forEach(therapist => {
+                                const therapistItem = document.createElement('div');
+                                therapistItem.classList.add('item');
+                                therapistItem.textContent = `${therapist.name} - ${therapist.location} - ${therapist.therapy}`;
+                                resultsContainer.appendChild(therapistItem);
+                            });
+                            resultsContainer.style.display = 'flex';
+                        } else {
+                            resultsContainer.style.display = 'none';
+                        }
+                    });
+            });
+        });
+
         function openNav() {
-            document.getElementById("mySidebar").style.width = "100%"; // Full width
-            document.body.classList.add("sidebar-open"); // Prevent body scrolling
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.width = "0"; // Collapse to zero width
-            document.body.classList.remove("sidebar-open"); // Re-enable body scrolling
-        }
-    </script>
-    
-    <script src="{% static 'js/script.js' %}"></script>
-    <script>
-        function toggleDetails(element) {
-            element.classList.toggle('active');
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
         }
     </script>
 </body>
