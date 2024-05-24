@@ -13,7 +13,7 @@
             <div class="container">
                 <header class="header">
                     <div id="header-logo">
-                        <img src="{% static 'Photos/logo.svg' %}" alt="Therapist Connect Logo"> 
+                        <img src="{% static 'Photos/logo-2.svg' %}" alt="Therapist Connect Logo"> 
                     </div>
         
                     <div id="mySidebar" class="sidebar">
@@ -93,6 +93,18 @@
 <div class="footer">
     <p>Copyright &copy; Therapist Connect 2024</p>
 </div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "100%"; // Full width
+        document.body.classList.add("sidebar-open"); // Prevent body scrolling
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0"; // Collapse to zero width
+        document.body.classList.remove("sidebar-open"); // Re-enable body scrolling
+    }
+</script>
 
 <script src="{% static 'script.js' %}"></script>
 
