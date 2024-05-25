@@ -10,6 +10,12 @@ from .forms import SearchForm, TherapistForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 
+def signup(request):
+    return render(request, 'signup.html')
+
+def login(request):
+    return render(request, 'login.html')
+
 def home(request):
     return render(request, 'index.html')
 
