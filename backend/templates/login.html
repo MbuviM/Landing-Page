@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Therapist Connect</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="signup">
+
+    <div class="logo-container">
+        <div class="signup-logo">
+            <img src="{% static 'Photos/logo-2.svg' %}" alt="Therapist Connect Logo">
+        </div>
+    </div>
+
+    <div class="signup-wrapper">
+        <div class="container">
+            <div class="sign-up-form">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="login-button">Login</button>
+                    <p>Create An Account? <a href="{% url 'signup' %}">Sign Up</a></p>
+                    <p><a href="#">Forgot Password?</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright &copy; Therapist Connect 2024</p>
+    </div>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
