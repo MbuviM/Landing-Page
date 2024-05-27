@@ -4,8 +4,8 @@ from django.urls import path
 urlpatterns = [
     path('search/', views.search_therapists, name='search-therapists'),
     path('user/create/',views.addUsers,name='create-post'),
-    path('', views.login, name='login'),
-    path('signup/', views.signup, name='signup'),
+    path('', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
     path('home/', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('find-a-therapist/', views.find_a_therapist, name='find_a_therapist'),
