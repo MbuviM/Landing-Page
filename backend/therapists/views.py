@@ -9,6 +9,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .forms import SearchForm, TherapistForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
+from django.views.generic import ListView, TemplateView
+from django.db.models import Q
 
 def signup(request):
     return render(request, 'signup.html')
@@ -23,9 +25,11 @@ def about(request):
     return render(request, 'about.html')
 
 def find_a_therapist(request):
+    model = Therapist
     return render(request, 'find-a-therapist.html')
 
 def therapist_registration(request):
+    model = Therapist
     return render(request, 'therapists.html')
 
 def success(request):
@@ -72,22 +76,6 @@ def addUsers(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-def find_a_therapist(request):
-    if request.method == 'GET':
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            location = form.cleaned_data.get('location')
-            therapy_type = form.cleaned_data.get('type_of_therapy')
-            therapists = Therapist.objects.all()
-            if location:
-                therapists = therapists.filter(location__icontains=location)
-            if therapy_type:
-                therapists = therapists.filter(type_of_therapy__icontains=therapy_type)
-            return render(request, 'find-a-therapist.html', {'form': form, 'therapists': therapists})
-    else:
-        form = SearchForm()
-    return render(request, 'find-a-therapist.html', {'form': form})
-
 # Register a therapist
 @csrf_protect
 
@@ -130,3 +118,15 @@ def therapist_register(request):
         return redirect('success')  # Replace with your success page URL
 
     return render(request, 'therapists.html')
+
+# List Therapist
+class TherapistList(ListView):
+    model = Therapist
+    template_name = 'templates/find-a-therapist.html'
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Therapist.objects.filter(
+            Q(location__icontains=query) | Q(type_of_therapy__icontains=query)
+        )
+        return object_list
