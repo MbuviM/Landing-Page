@@ -6,7 +6,7 @@ from rest_framework import status
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import SearchForm, TherapistForm
+from .forms import SearchForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import ListView, TemplateView
@@ -35,6 +35,10 @@ def therapist_registration(request):
 def success(request):
     return render(request, 'success.html')
 
+def search_therapists(request):
+    model = Therapist
+    return render(request, 'search-therapists.html')
+
 # Create your views here.
 @api_view(['GET'])
 def index(request):
@@ -46,25 +50,6 @@ def index(request):
         'Edit post': 'edit-post/<uuid:id>',
     }
     return Response(urls)
-
-def search_therapists(request):
-    form = TherapistForm(request.GET or None)
-    therapists = []
-
-    if form.is_valid():
-        location = form.cleaned_data.get('location')
-        therapy_type = form.cleaned_data.get('therapy_type')
-
-        if location or therapy_type:
-            query = {}
-            if location:
-                query['location__iexact'] = location
-            if therapy_type:
-                query['type_of_therapy__iexact'] = therapy_type
-            
-            therapists = Therapist.objects.filter(**query)
-    
-    return render(request, 'find-a-therapist.html', {'form': form, 'therapists': therapists})
 
 # Add a user
 @api_view(['POST'])
@@ -110,8 +95,6 @@ def therapist_register(request):
             years_of_experience=years_of_experience,
             image=image,
             fee_per_session=fee_per_session,
-            monthly_slots=monthly_slots,
-            monthly_fee=monthly_fee,
             accepts_queer_clients=accepts_queer_clients
         )
         therapist.save()
@@ -119,14 +102,17 @@ def therapist_register(request):
 
     return render(request, 'therapists.html')
 
-# List Therapist
-class TherapistList(ListView):
-    model = Therapist
-    template_name = 'templates/find-a-therapist.html'
+   
+# Sessions
+def index(request):
+    
+    num_therapists = Therapist.objects.count()
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
 
-    def get_queryset(self):  # new
-        query = self.request.GET.get("q")
-        object_list = Therapist.objects.filter(
-            Q(location__icontains=query) | Q(type_of_therapy__icontains=query)
-        )
-        return object_list
+    context = {
+        'num_therapists': num_therapists,
+        'num_visits': num_visits,
+    }
+    return render(request, 'index.html', context=context)
+
