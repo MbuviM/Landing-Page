@@ -1,5 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
+# Authentication model
+ROLE_CHOICES = (
+    ('Therapist', 'Therapist'),
+    ('Client', 'Client')
+)
+class User(AbstractUser):
+    # Field
+    email = models.EmailField()
+    password = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True)
+    role = models.TextField(choices=ROLE_CHOICES, default='Client')
+    # Method
+    def __str__(self):
+        return self.email
+    
 # Therapist Model
 gender_choices = (
     ('Female', 'Female'),
