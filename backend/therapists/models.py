@@ -1,21 +1,23 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
-# Authentication model
+# Role choices for the user model
 ROLE_CHOICES = (
     ('Therapist', 'Therapist'),
-    ('Client', 'Client')
+    ('User', 'User')
 )
+
+# Custom user model
 class User(AbstractUser):
-    # Field
-    email = models.EmailField()
-    password = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
-    role = models.TextField(choices=ROLE_CHOICES, default='Client')
-    # Method
-    def __str__(self):
-        return self.email
+    email = models.EmailField(_('email address'), unique=True)
+    password = models.CharField(max_length=100)
+    role = models.CharField(max_length=100, choices=ROLE_CHOICES, default=None)
+    is_active = models.BooleanField(default=True)
     
+
 # Therapist Model
 gender_choices = (
     ('Female', 'Female'),
@@ -25,7 +27,6 @@ gender_choices = (
     ('Other', 'Other')
 )
 class Therapist(models.Model):
-    # Field
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -39,21 +40,16 @@ class Therapist(models.Model):
     gender = models.TextField(choices=gender_choices, default='Other')
     type_of_therapy = models.ManyToManyField('Therapy')
 
-
 # Location Model
 class Location(models.Model):
-    # Field
-    Name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
-    # Method
     def __str__(self):
-        return self.Name
-    
+        return self.name
+
 # Type of Therapy Model
 class Therapy(models.Model):
-    # Field
-    Name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
-    # Method
     def __str__(self):
-        return self.Name
+        return self.name
