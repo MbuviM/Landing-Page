@@ -1,7 +1,8 @@
 # forms.py
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
 from .models import User
 
 class SearchForm(forms.Form):
@@ -49,9 +50,28 @@ class CreateUserForm(UserCreationForm):
             )
         return cleaned_data
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput())
+class LoginForm(AuthenticationForm):
+    error_messages = {
+        'invalid_login': "Please enter a correct %(username)s and password. Note that both fields may be case-sensitive.",
+        'inactive': "This account is inactive.",
+    }
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username and password:
+            self.user_cache = authenticate(username=username, password=password)
+            if self.user_cache is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'],
+                    code='invalid_login',
+                    params={'username': self.username_field.verbose_name},
+                )
+            else:
+                self.confirm_login_allowed(self.user_cache)
+
+        return self.cleaned_data
 
 
 
