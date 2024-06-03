@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Therapist Connect</title>
-    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="signup">
 
@@ -20,21 +20,26 @@
         <div class="signup-container">
             <div class="sign-up-form">
                 <h2>Sign Up</h2>
-                <form id="signup-form">
-                    <input type="text" id="username" placeholder="User name" required>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <select id="user-type" required>
-                        <option value="" disabled selected>Select user type</option>
-                        <option value="user">User</option>
-                        <option value="therapist">Therapist</option>
-                    </select>
+                <form method="post" action="{% url 'signup' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <button type="submit" class="login-button">Register</button>
-                    <p>Already Have Account? <a href="{% url 'login' %}">Login</a></p>
                 </form>
             </div>
         </div>
     </div>
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        // JavaScript code to handle form submission
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+            
+            // Perform any form validation if needed
+            
+            // Submit the form
+            this.submit();
+        });
+    </script>
 </body>
 </html>
