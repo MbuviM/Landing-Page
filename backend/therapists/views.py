@@ -30,18 +30,20 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def login(request):
-    form = LoginForm(request.POST)
-    msg = 'None'
-    if form.is_valid():
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            return redirect('signup')
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, 'Invalid username or password. Please try again.')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 def home(request):
     return render(request, 'index.html')
