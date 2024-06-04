@@ -51,6 +51,12 @@
             // Submit the form
             this.submit();
         });
+
+           // JavaScript code to clear form fields on page load
+           document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            form.reset();
+        });
     </script>
 </body>
 </html>
