@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, AuthenticationForm
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import PasswordResetView
 from django.views.decorators.csrf import csrf_protect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Therapist, User
 from .serializer import TherapistSerializer, UserSerializer
-from .forms import CreateUserForm, LoginForm
+from .forms import CreateUserForm, LoginForm, ForgotPasswordForm
 from django.contrib import messages
 
 def signup(request):
@@ -44,6 +46,27 @@ def login(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
+class CustomPasswordResetView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'forgot_password.html'
+    email_template_name = 'password_reset.html'
+    success_message = "Password reset link has been sent to your email."
+    success_url = '/login/'
+
+def forgot_password(request):
+    if request.method == 'POST':
+        form = ForgotPasswordForm(request.POST)
+        if form.is_valid():
+            form.save(
+                request=request,
+                use_https=request.is_secure(),
+                email_template_name='password_reset.html'
+            )
+            messages.success(request, 'Password reset link has been sent to your email.')
+            return redirect('login')
+    else:
+        form = ForgotPasswordForm()
+    return render(request, 'forgot_password.html', {'form': form})
 
 def home(request):
     return render(request, 'index.html')
