@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'therapists',
+    'therapists.apps.TherapistsConfig',
     'rest_framework',
     'rest_framework.authtoken'
 ]
@@ -147,3 +147,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Sessions settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+# Email Configurations
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mwendembuvi10@gmail.com'
+EMAIL_HOST_PASSWORD = 'JAYME254'
+DEFAULT_FROM_EMAIL = 'mwendembuvi10@gmail.com'
