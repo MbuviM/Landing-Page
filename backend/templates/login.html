@@ -19,9 +19,9 @@
         <div class="login-container">
             <div class="sign-up-form">
                 <h2>Login</h2>
-                <form id="login-form">
-                    <input type="email" id="login-email" placeholder="Email" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <button type="submit" class="login-button">Login</button>
                 </form>                
                     <p>Create An Account? <a href="{% url 'signup' %}" style="color: white;">Sign Up</a></p>
