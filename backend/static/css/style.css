@@ -464,7 +464,7 @@ h2{
 }
 
 #therapist-registration.therapist-registration {
-    background-color: #f5f5f5; /* Light grey background */
+    background-color: peachpuff; /* Light grey background */
     padding: 40px 20px; /* Padding around the section */
     text-align: center; /* Center-align text */
     border-radius: 10px; /* Rounded corners */
@@ -555,6 +555,146 @@ h2{
         font-size: 14px; /* Smaller font size for button */
         padding: 8px 16px; /* Adjust padding for button */
     }
+}
+
+body {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.signup-logo {
+    float: left;
+    margin-right: 20px; /* Adjust margin as needed */
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    .signup-logo {
+        float: none;
+        text-align: top left; /* Center the logo */
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.signup{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.signup-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 150px;
+}
+
+.signup-container {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.sign-up-form, .login-form {
+    text-align: center;
+}
+
+.sign-up-form h2, .login-form h2 {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+/* Style for the login button */
+.login-button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #fcb69f; 
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Hover effect */
+.login-button:hover {
+    background-color: orangered;
+}
+
+button:hover {
+    background-color: #ffecd2;
+}
+
+p {
+    margin-top: 10px;
+    color: #555;
+}
+
+p a {
+    color: #fcb69f;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .login-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 10px;
+        overflow: hidden; /* Prevents content overflow */
+    }
+
+    .logo-container, .signup-logo {
+        display: flex;
+        justify-content: left;
+        align-items: start;
+        width: 200px; /* Adjust size as needed */
+        height: 200px; /* Adjust size as needed */
+        margin-bottom: 400px; /* Adjust margin as needed */
+        margin-left: 50px;
+    }
+
+    .signup-logo img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    
 }
 
 /* Footer styles */
