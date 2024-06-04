@@ -701,7 +701,7 @@ p a:hover {
 .footer {
     text-align: center;
     padding: 10px 20px;
-    background-color: white;
+    background: linear-gradient(to right, #ffecd2 0%, white 100%);
     color: black;
     position: fixed;
     bottom: 0;
