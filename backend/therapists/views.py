@@ -15,6 +15,7 @@ from .models import Therapist, User
 from .serializer import TherapistSerializer, UserSerializer
 from .forms import CreateUserForm, LoginForm, ForgotPasswordForm
 from django.contrib import messages
+from django.contrib.auth import login as auth_login
 
 def signup(request):
     if request.method == 'POST':
@@ -33,18 +34,16 @@ def signup(request):
 
 def login(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.error(request, 'Invalid username or password. Please try again.')
+            user = form.get_user()
+            auth_login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid username or password')
     else:
-        form = LoginForm()
+        form = LoginForm()  # Initialize an empty form for GET requests
+
     return render(request, 'login.html', {'form': form})
 
 class CustomPasswordResetView(SuccessMessageMixin, PasswordResetView):
