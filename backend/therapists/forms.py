@@ -73,7 +73,11 @@ class LoginForm(AuthenticationForm):
 
         return self.cleaned_data
 
+class ForgotPasswordForm(forms.Form):
+    email = forms.EmailField(max_length=100)
 
-
-
-
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise ValidationError("This email is not associated with any account.")
+        return email
