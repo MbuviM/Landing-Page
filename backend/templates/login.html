@@ -19,16 +19,38 @@
         <div class="login-container">
             <div class="sign-up-form">
                 <h2>Login</h2>
-                <form id="login-form">
-                    <input type="email" id="login-email" placeholder="Email" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <button type="submit" class="login-button">Login</button>
-                    <p>Create An Account? <a href="{% url 'signup' %}">Sign Up</a></p>
-                    <p><a href="#">Forgot Password?</a></p>
+                </form>                
+                    <p>Create An Account? <a href="{% url 'signup' %}" style="color: white;">Sign Up</a></p>
+                    <p><a href="{% url 'password_reset'  %}" style="color: white;">Forgot Password?</a></p>
+                    {% if form.errors %}
+                        <ul class="errorlist">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </form>
             </div>
         </div>
     </div>
     <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+        // JavaScript code to handle form submission
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+            
+            // Perform any form validation if needed
+            
+            // Submit the form
+            this.submit();
+        });
+    </script>
 </body>
 </html>
