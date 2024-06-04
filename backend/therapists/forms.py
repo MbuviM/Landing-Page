@@ -52,7 +52,7 @@ class CreateUserForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     error_messages = {
-        'invalid_login': "Please enter a correct %(username)s and password. Note that both fields may be case-sensitive.",
+        'invalid_login': "Invalid username or password. Please try again.",
         'inactive': "This account is inactive.",
     }
 
