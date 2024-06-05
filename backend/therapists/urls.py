@@ -18,5 +18,6 @@ urlpatterns = [
     path('therapists/register/success/', views.success, name='success'),
     path('therapists/register/', views.therapist_register, name='therapist_register'),
     path('search therapists/', views.search_therapists, name='search_therapists'),
+    path('test-email/', views.test_email_view, name='test_email')
 ]
 

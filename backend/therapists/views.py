@@ -16,6 +16,8 @@ from .serializer import TherapistSerializer, UserSerializer
 from .forms import CreateUserForm, LoginForm, ForgotPasswordForm
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 def signup(request):
     if request.method == 'POST':
@@ -136,3 +138,14 @@ class UserLogoutView(APIView):
         token = Token.objects.get(key=token_key)
         token.delete()
         return Response({'detail': 'Successfully logged out.'})
+
+def test_email_view(request):
+    send_mail(
+        'Test Email Subject',
+        'This is a test email message.',
+        None,
+        ['mwendembuvi10@gmail.com'],
+        fail_silently=False,
+    )
+    return HttpResponse("Test email sent.")
+
