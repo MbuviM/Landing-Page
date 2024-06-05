@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1!$m*y@efvft#4rp%=oxn(5be6qwf4u+1euaey!t58f=p9mz&='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -148,14 +148,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Sessions settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
-# Email Configurations
+# SMTP Configurations
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'
+EMAIL_HOST = 'smtp.protonmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'host_email'
-EMAIL_HOST_PASSWORD = 'host_password'
-DEFAULT_FROM_EMAIL = 'default'
+EMAIL_HOST_USER = 'HOST_USER'
+EMAIL_HOST_PASSWORD = 'HOST_PASSWORD'
+DEFAULT_FROM_EMAIL = 'HOST_USER'
 
 # Backend Configurations
 AUTHENTICATION_BACKENDS = [
