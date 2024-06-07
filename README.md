@@ -5,8 +5,11 @@ Therapist Connect is a web application designed to help users find therapists an
 
 ## Features
 - **Homepage:** A welcoming introduction to the site with navigation links.
+- **About**: Contains the mission of the organization.
 - **Find a Therapist:** Search for therapists based on location and type of therapy.
 - **Therapist Registration:** Form for therapists to register and add their information to the directory.
+- **Login Page**
+- **Signup Page**
 
 ## Technologies Used
 - **HTML5:** Structure of the website.
